@@ -1,6 +1,7 @@
 
 // import { useRouter } from "next/navigation"
 
+import BlogCard from "../components/blogCard"
 import CreateButton from "../components/button"
 
 export default async function Blogs(){
@@ -16,10 +17,7 @@ export default async function Blogs(){
            <div className="flex gap-2 mt-8">
              {
                 blogs && blogs.map((blog: any, i: number) => (
-                    <div className="border border-black/10 rounded-sm w-fit px-12 py-8" key={blog.id ?? i}>
-                        <p className="text-lg">{blog.title}</p>
-                        <p className="italic">{blog.author}</p>
-                    </div>
+                  <BlogCard blog={blog} key={i}/>
                 ))
             }
            </div>

@@ -1,16 +1,9 @@
-interface Blog  {
-    title: string;
-    author: string
-}
-const blogs: Blog[] = [
-    {
-        title: 'my first blog',
-        author: 'Abhi'
-    }
-]
+import { Insert, QueryAll } from "@/app/db";
+
 
 export async function GET(request: Request) {
 
+  const blogs = QueryAll()
   return new Response(JSON.stringify(blogs), {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
@@ -24,7 +17,7 @@ export async function POST(request: Request) {
  
   // e.g. Insert new user into your DB
   const newBlog = { title, author };
-  blogs.push(newBlog)
+  Insert(newBlog)
   console.log(newBlog)
  
   return new Response(JSON.stringify(newBlog), {

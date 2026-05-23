@@ -5,13 +5,15 @@ export default async function Page({ params }: {
 }){
 
     const { blogId} = await params;
-    const data = await (await fetch("http://localhost:3000/api/blogs")).json()
+    const data = await (await fetch(`http://localhost:3000/api/blog/${blogId}`)).json()
     console.log(data)
     
 
+
     return (
         <div>
-            <p className="underline text-2xl">this post is {blogId} </p>
+            <p className=" text-2xl">{data.title} </p>
+            <p className="text-xl ">By : {data.author} </p>
         </div>
     )
 }
